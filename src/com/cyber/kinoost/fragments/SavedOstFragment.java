@@ -30,7 +30,7 @@ public class SavedOstFragment extends Fragment {
 
 	private Context mContext;
 	final ApiHelper apiHelper = new ApiHelper();
-	
+
 	public SavedOstFragment() {
 		// Empty constructor required for fragment subclasses
 	}
@@ -80,7 +80,6 @@ public class SavedOstFragment extends Fragment {
 
 			}
 		}
-
 
 		return music;
 
