@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,9 +20,8 @@ import com.cyber.kinoost.api.vk.sources.Api;
 import com.cyber.kinoost.db.models.Film;
 import com.cyber.kinoost.db.models.Music;
 import com.cyber.kinoost.img.ImageLoader;
-import com.cyber.kinoost.views.KPlayer;
 
-public class ListViewAdapter extends BaseAdapter {
+public class FilmOstListViewAdapter extends BaseAdapter {
     
 	private Context mContext;
     
@@ -33,15 +31,9 @@ public class ListViewAdapter extends BaseAdapter {
     
 	private ImageLoader imageLoader;
 	
-	final KPlayer kPlayer = new KPlayer(mContext);
-	
-	final Account account = new Account(mContext);
-	
 	final ApiHelper apiHelper = new ApiHelper();
 	
-	final Api api = new Api(account);
-
-    public ListViewAdapter(Context c, Film film, List<Music> sounds) {
+    public FilmOstListViewAdapter(Context c, Film film, List<Music> sounds) {
         mContext = c;
         this.film = film;
         this.music = sounds;
@@ -97,7 +89,7 @@ public class ListViewAdapter extends BaseAdapter {
 		TextView musicHolder;
 		if (row == null || row.getTag() instanceof FilmInfoHolder) {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
-			row = inflater.inflate(R.layout.row_list, parent, false);
+			row = inflater.inflate(R.layout.film_ost_row, parent, false);
 			musicHolder = (TextView) row
 					.findViewById(R.id.film_name);
 			musicHolder.setText(music.get(position).getName());
@@ -106,8 +98,12 @@ public class ListViewAdapter extends BaseAdapter {
 			musicRow.setOnClickListener(new OnClickListener() {
 	             @Override
 	             public void onClick(View v) {
-	            	 Log.i("ListAdapter", music.get(position).getName());
-	            	 apiHelper.getSongMusic(mContext, api, music.get(position), kPlayer);
+					Log.i("ListAdapter", music.get(position).getName());
+					Account account = new Account(mContext);
+					Api api = new Api(account);
+
+					apiHelper.getSongMusic(mContext, api, music.get(position));
+
 	             }
 	         });
 		} else
