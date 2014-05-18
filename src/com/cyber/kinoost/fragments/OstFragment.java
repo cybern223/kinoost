@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.cyber.kinoost.R;
+import com.cyber.kinoost.adapters.FilmOstListViewAdapter;
 import com.cyber.kinoost.adapters.OstListViewAdapter;
 import com.cyber.kinoost.db.models.Music;
 import com.cyber.kinoost.db.repositories.MusicRepository;

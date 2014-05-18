@@ -32,6 +32,7 @@ import com.cyber.kinoost.db.DatabaseHelper;
 import com.cyber.kinoost.fragments.FilmsFragment;
 import com.cyber.kinoost.fragments.InfoFragment;
 import com.cyber.kinoost.fragments.OstFragment;
+import com.cyber.kinoost.fragments.SavedOstFragment;
 import com.cyber.kinoost.fragments.TopRatedFragment;
 
 public class KinoostActivity extends FragmentActivity implements TabListener, OnQueryTextListener {
@@ -202,8 +203,12 @@ public class KinoostActivity extends FragmentActivity implements TabListener, On
 		case 1:
 			fragment = new OstFragment();
 			break;
-		case 2:
+		/*case 2:
 			fragment = new TopRatedFragment();
+			break;*/
+		case 2:
+			fragment = new SavedOstFragment();
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 			break;
 		case 4:
 			fragment = new InfoFragment();
