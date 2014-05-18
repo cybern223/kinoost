@@ -69,8 +69,6 @@ public class SavedOstFragment extends Fragment {
 			for (File file : home.listFiles(new FileExtensionFilter())) {
 				String title = file.getName().substring(0,
 						(file.getName().length() - 4));
-				String path = file.getPath();
-
 				try {
 					music = musicRepo.findMusicByName(title, 0, 30);
 				} catch (SQLException e) {
