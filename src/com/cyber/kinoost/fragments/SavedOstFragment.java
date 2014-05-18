@@ -18,8 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.cyber.kinoost.R;
-import com.cyber.kinoost.adapters.OstListViewAdapter;
-import com.cyber.kinoost.adapters.FilmOstListViewAdapter;
+import com.cyber.kinoost.adapters.SavedOstListViewAdapter;
+
 import com.cyber.kinoost.api.Account;
 import com.cyber.kinoost.api.ApiHelper;
 import com.cyber.kinoost.api.vk.sources.Api;
@@ -50,18 +50,8 @@ public class SavedOstFragment extends Fragment {
 		final List<Music> music = getMusic();
 
 		ListView listView = (ListView) saved.findViewById(R.id.listView);
-		listView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-		Log.i("ListAdapter", music.get(1).getName());
-			Account account = new Account(mContext);
-				Api api = new Api(account);
 
-				apiHelper.getSongMusic(mContext, api, music.get(1));
-
-            }
-        });
-		listView.setAdapter(new OstListViewAdapter(getActivity(), music));
+		listView.setAdapter(new SavedOstListViewAdapter(getActivity(), music));
 		return saved;
 	}
 
